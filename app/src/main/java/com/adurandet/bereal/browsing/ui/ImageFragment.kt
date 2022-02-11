@@ -35,5 +35,5 @@ class ImageFragment : Fragment() {
 
     }
 
-    private fun buildImageUrl() = "${BuildConfig.BASE_URL}/items/${imageFragmentArgs.id}/data"
+    private fun buildImageUrl() = "${BuildConfig.BASE_URL}items/${imageFragmentArgs.id}/data"
 }

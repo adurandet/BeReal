@@ -7,6 +7,7 @@ import com.eurosport.home.network.Resource
 import com.eurosport.home.network.Status
 import com.eurosport.utils.AndroidDispatcherProvider
 import com.eurosport.utils.DispatcherProvider
+import kotlinx.coroutines.async
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.withContext
@@ -18,6 +19,15 @@ class BrowsingRepository(
 
     private val _browsingContentFlow = MutableSharedFlow<Resource<List<BrowsingContent>>>(1)
     val browsingContentFlow: SharedFlow<Resource<List<BrowsingContent>>> = _browsingContentFlow
+
+    suspend fun deleteItem(id: String, parentId: String) {
+        withContext(dispatcherProvider.io()) {
+            _browsingContentFlow.tryEmit(Resource.loading())
+            async { browsingApiInterface.deleteContent(id) }.await()
+            getBrowsingContent(parentId)
+        }
+
+    }
 
     suspend fun getBrowsingContent(id: String) {
         withContext(dispatcherProvider.io()) {

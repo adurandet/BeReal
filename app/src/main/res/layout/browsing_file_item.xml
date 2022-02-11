@@ -26,7 +26,20 @@
         android:gravity="center"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toEndOf="@id/fileIcon"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/deleteIcon"
         android:text="Item" />
+
+
+    <ImageView
+        android:id="@+id/deleteIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_delete"
+        android:layout_margin="@dimen/spacing_default"
+        app:layout_constraintTop_toTopOf="@id/browsingName"
+        app:layout_constraintBottom_toBottomOf="@id/browsingName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:tint="?attr/colorOnSurface"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

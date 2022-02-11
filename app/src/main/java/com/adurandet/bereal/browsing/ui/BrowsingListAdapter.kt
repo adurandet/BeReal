@@ -50,6 +50,9 @@ class DirectoryViewHolder(private val binding: BrowsingDirectoryItemBinding) : C
             root.setOnClickListener {
                 onDirectoryClickListener.onDirectoryClicked(data.id, data.parentId)
             }
+            deleteIcon.setOnClickListener {
+                onDirectoryClickListener.onDirectoryDeleteClicked(data.id, data.parentId)
+            }
         }
     }
 }
@@ -60,6 +63,9 @@ class FileViewHolder(private val binding: BrowsingFileItemBinding) : ContentView
             browsingName.text = data.name
             root.setOnClickListener {
                 onFileClickListener.onFileClicked(data.id)
+            }
+            deleteIcon.setOnClickListener {
+                onFileClickListener.onFileDeleteClicked(data.id, data.parentId)
             }
         }
     }

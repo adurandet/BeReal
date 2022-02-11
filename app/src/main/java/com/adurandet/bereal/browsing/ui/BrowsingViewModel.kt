@@ -72,6 +72,20 @@ class BrowsingViewModel : ViewModel(), OnDirectoryClickListener, OnFileClickList
         _actionsSharedFlow.tryEmit(BrowsingAction.GoToDirectory(id, parentId))
     }
 
+    override fun onDirectoryDeleteClicked(id: String, parentId: String) {
+        deleteItem(id, parentId)
+    }
+
+    override fun onFileDeleteClicked(id: String, parentId: String) {
+        deleteItem(id, parentId)
+    }
+
+    private fun deleteItem(id: String, parentId: String) {
+        viewModelScope.launch {
+            repository.deleteItem(id, parentId)
+        }
+    }
+
     override fun onFileClicked(id: String) {
         _actionsSharedFlow.tryEmit(BrowsingAction.OpenImage(id))
     }
