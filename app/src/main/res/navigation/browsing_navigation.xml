@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_navigation"
+    app:startDestination="@+id/browsingFragment">
+
+    <fragment
+        android:id="@+id/browsingFragment"
+        android:name="com.adurandet.bereal.browsing.ui.BrowsingFragment"
+        android:label="@string/app_name"
+        tools:layout="@layout/browsing_fragment">
+
+        <argument
+            android:name="directoryId"
+            android:defaultValue="8d1b283d75d6ae7892ad8bdd8f305dedd6e93a36"
+            app:argType="string" />
+
+        <argument
+            android:name="parentId"
+            android:defaultValue=""
+            app:argType="string" />
+
+        <action
+            android:id="@+id/go_to_directory"
+            app:destination="@id/browsingFragment" />
+
+        <action
+            android:id="@+id/open_image"
+            app:destination="@id/imageFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/imageFragment"
+        android:name="com.adurandet.bereal.browsing.ui.ImageFragment"
+        tools:layout="@layout/image_frament">
+
+        <argument
+            android:name="id"
+            app:argType="string"
+            android:defaultValue=""/>
+    </fragment>
+
+</navigation>
